@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using AmbWindowsIoTSDK;
-using AmbWindowsIoTSDK.Model;
+using AmbWindowsIoTSDK.Model.Event;
+using Newtonsoft.Json.Linq;
 
 namespace AmbWindowsIoT
 {
@@ -36,10 +28,45 @@ namespace AmbWindowsIoT
             var sdk = new AmbrosusSdk(new AmbrosusSettings
             {
                 ApiEndpoint = "https://gateway-test.ambrosus.com",
-            
+                Address = "0x1B59bF08472C601c638eF710b3af625a3238C1c0",
+                Secret = "0xcdde30d1c7e4e047a192098bc3aaff24e1519595a22161726df0fe22ab5f1467"
+
+
+
             });
-            var data2 = sdk.GetAssetById("0x0fa1c2b80d6ecdfbad74b0b178c9a654e19f9caf1e02b6e1309f63f11aa408e6");
-            var data = sdk.CreateAsset();
+            var nodeinfo = sdk.GetNodeInfo();
+            //var data2 = sdk.GetAssetById("0x0fa1c2b80d6ecdfbad74b0b178c9a654e19f9caf1e02b6e1309f63f11aa408e6");
+            //var data = sdk.CreateAsset();
+            //var events = sdk.GetEvents(new EventOptions
+            //{
+            //    AssetId = "0x9d906df5f69a7a9fa416dd0742994d93d65bc70b2073e2fe43fd3f833802632f",
+            //    PerPage = 1
+            //});
+
+            //var createdEvent = sdk.CreateEvent("0x9d906df5f69a7a9fa416dd0742994d93d65bc70b2073e2fe43fd3f833802632f",
+            //    new List<Datum>
+            //    {
+            //        new Datum
+            //        {
+            //            Type = EventType.Temperature.Value,
+            //            AdditionalData = new Dictionary<string, JToken>
+            //            {
+            //                {"temperature", "15 C"},
+            //                {"greetings", "yo" }
+            //            }
+            //        },
+            //        new Datum
+            //        {
+            //            Type = EventType.AssetLocation.Value,
+            //            AdditionalData = new Dictionary<string, JToken>
+            //            {
+            //                {"location", "dsadsa"},
+            //                {"ant", "vv" }
+            //            }
+            //        }
+            //    });
+            //var event1 = sdk.GetEventById("0xd00331d81e6e4285950eb7b9c6549e99c569be2da26f9815b3b367bb09eb90ca");
+
         }
 
         /// <summary>

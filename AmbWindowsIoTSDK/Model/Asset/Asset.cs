@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace AmbWindowsIoTSDK.Model
+namespace AmbWindowsIoTSDK.Model.Asset
 {
 
     public class AssetList
@@ -59,7 +59,5 @@ namespace AmbWindowsIoTSDK.Model
         [JsonProperty("metadata")]
         public Metadata Metadata { get; set; }
     }
-
-
 
 }

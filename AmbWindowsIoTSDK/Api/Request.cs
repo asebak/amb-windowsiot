@@ -33,6 +33,7 @@ namespace AmbWindowsIoTSDK.Api
             };
             req.Headers.Authorization = new AuthenticationHeaderValue("AMB", _settings.Secret);
             var res = client.SendAsync(req).Result;
+
             res.EnsureSuccessStatusCode();
             return JsonConvert.DeserializeObject<T>(res.Content.ReadAsStringAsync().Result);
         }

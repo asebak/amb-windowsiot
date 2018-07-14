@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AmbWindowsIoTSDK.Model;
+using AmbWindowsIoTSDK.Model.Asset;
 using Newtonsoft.Json;
 
 namespace AmbWindowsIoTSDK.Api

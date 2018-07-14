@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AmbWindowsIoTSDK.Model;
+﻿using System.Collections.Generic;
+using AmbWindowsIoTSDK.Model.Event;
 using Newtonsoft.Json;
 
 namespace AmbWindowsIoTSDK.Api
@@ -17,7 +13,7 @@ namespace AmbWindowsIoTSDK.Api
             _request = request;
         }
 
-        public Object GetEvents(EventOptions options)
+        public EventList GetEvents(EventOptions options)
         {
             var query = Utils.BuildQueryString(new List<KeyValuePair<string, object>>
             {
@@ -28,20 +24,20 @@ namespace AmbWindowsIoTSDK.Api
                 new KeyValuePair<string, object>(nameof(options.ToTimestamp).ToCamelCase(), options.ToTimestamp)
             });
 
-            var events = _request.GetRequest<object>($"events{query}");
+            var events = _request.GetRequest<EventList>($"events{query}");
             return events;
         }
 
 
-        public Object GeEventById(string eventId)
+        public Event GetEventById(string eventId)
         {
-            var eve = _request.GetRequest<Object>($"events/{eventId}");
+            var eve = _request.GetRequest<Event>($"events/{eventId}");
             return eve;
         }
 
-        public Asset CreateEvent(string assetId, Event eve)
+        public Event CreateEvent(string assetId, Event eve)
         {
-            return _request.PostRequest<Asset>($"assets/{assetId}/events", JsonConvert.SerializeObject(eve,
+            return _request.PostRequest<Event>($"assets/{assetId}/events", JsonConvert.SerializeObject(eve,
                 new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore}
             ));
         }
