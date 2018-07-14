@@ -131,6 +131,12 @@
       <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AmbWindowsIoTSDK\AmbWindowsIoTSDK.csproj">
+      <Project>{f7090687-de0b-4e59-8d2c-e80a594c31bf}</Project>
+      <Name>AmbWindowsIoTSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

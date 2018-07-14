@@ -1,4 +1,5 @@
 ﻿using System.Dynamic;
+using AmbWindowsIoTSDK.Model;
 using Newtonsoft.Json;
 
 namespace AmbWindowsIoTSDK.Api
@@ -16,7 +17,8 @@ namespace AmbWindowsIoTSDK.Api
         {
             dynamic obj = new ExpandoObject();
             obj.validUntil = 1600000000;
-            return _request.PostRequest<string>("token", JsonConvert.SerializeObject(obj));
+            var response =  (TokenResponse) _request.PostRequest<TokenResponse>("token", JsonConvert.SerializeObject(obj));
+            return response.Token;
         }
     }
 }

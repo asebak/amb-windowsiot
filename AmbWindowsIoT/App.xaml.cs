@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AmbWindowsIoTSDK;
 
 namespace AmbWindowsIoT
 {
@@ -30,6 +31,11 @@ namespace AmbWindowsIoT
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            var sdk = new AmbrosusSdk(new AmbrosusSettings
+            {
+                ApiEndpoint = "https://gateway-test.ambrosus.com",
+            });
         }
 
         /// <summary>

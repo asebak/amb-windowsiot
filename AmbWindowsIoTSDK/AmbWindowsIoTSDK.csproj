@@ -111,12 +111,18 @@
     <Compile Include="Api\Assets.cs" />
     <Compile Include="Api\Auth.cs" />
     <Compile Include="Api\Events.cs" />
+    <Compile Include="Api\IRequest.cs" />
+    <Compile Include="Api\Request.cs" />
+    <Compile Include="Model\TokenResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\AmbWindowsIoTSDK.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>8.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

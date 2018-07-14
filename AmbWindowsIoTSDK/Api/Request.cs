@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace AmbWindowsIoTSDK.Api
 {
@@ -22,7 +25,16 @@ namespace AmbWindowsIoTSDK.Api
 
         public T PostRequest<T>(string path, string body)
         {
-            return (T)Convert.ChangeType("", typeof(T));
+            var client = new HttpClient {BaseAddress = new Uri(_settings.ApiEndpoint)};
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //client.DefaultRequestHeaders.ConnectionClose = false;
+            var req = new HttpRequestMessage(HttpMethod.Post, path)
+            {
+                Content = new StringContent(body, Encoding.UTF8, "application/json")
+            };
+            req.Headers.Authorization = new AuthenticationHeaderValue("AMB", _settings.Secret);
+            var res = client.SendAsync(req).Result;
+            return JsonConvert.DeserializeObject<T>(res.Content.ReadAsStringAsync().Result);
         }
     }
 }

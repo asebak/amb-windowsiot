@@ -15,42 +15,44 @@ namespace AmbWindowsIoTSDK
 
         public AmbrosusSdk(AmbrosusSettings settings)
         {
-            this._auth = new Auth(settings);
-            this._assets = new Assets(settings, this._auth);
-            this._events = new Events(settings, this._auth);
+           this._auth = new Auth(new Request(settings));
+           this._assets = new Assets(settings, this._auth);
+           this._events = new Events(settings, this._auth);
         }
 
-        public object getAssetById(string assetId)
+        public object GetAssets(object paramaters)
         {
             throw new NotImplementedException();
         }
 
-        public object getEventById(string eventId)
+
+        public object GetAssetById(string assetId)
         {
             throw new NotImplementedException();
         }
 
-        public object getAssets(object paramaters)
+        public object GetEventById(string eventId)
         {
             throw new NotImplementedException();
         }
 
-        public object getEvents(object paramaters)
+
+        public object GetEvents(object paramaters)
         {
             throw new NotImplementedException();
         }
 
-        public object createAsset(object asset)
+        public object CreateAsset(object asset)
         {
             throw new NotImplementedException();
         }
 
-        public object createEvent(object asset, object eventData)
+        public object CreateEvent(object asset, object eventData)
         {
             throw new NotImplementedException();
         }
 
-        public object parseEvents(object eventData)
+        public object ParseEvents(object eventData)
         {
             throw new NotImplementedException();
         }
