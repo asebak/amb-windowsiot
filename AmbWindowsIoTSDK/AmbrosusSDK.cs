@@ -4,31 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AmbWindowsIoTSDK.Api;
+using AmbWindowsIoTSDK.Model;
 
 namespace AmbWindowsIoTSDK
 {
     public class AmbrosusSdk
     {
+        private readonly AmbrosusSettings _settings;
         private readonly Auth _auth;
         private Assets _assets;
         private Events _events;
 
         public AmbrosusSdk(AmbrosusSettings settings)
         {
-           this._auth = new Auth(new Request(settings));
-           this._assets = new Assets(settings, this._auth);
-           this._events = new Events(settings, this._auth);
+            _settings = settings;
+            this._auth = new Auth(new Request(settings));
+            this._assets = new Assets(new Request(settings));
+            this._events = new Events(settings, this._auth);
         }
 
-        public object GetAssets(object paramaters)
+        public AssetList GetAssets(AssetOptions options)
         {
-            throw new NotImplementedException();
+           return this._assets.GetAssets(options);
         }
 
 
-        public object GetAssetById(string assetId)
+        public Asset GetAssetById(string assetId)
         {
-            throw new NotImplementedException();
+            return this._assets.GetAssetById(assetId);
+        }
+
+        public Asset CreateAsset()
+        {
+            var param = new Asset
+            {
+                Content = new Content
+                {
+                    IdData = new IdData
+                    {
+                        CreatedBy = _settings.Address,
+                        SequenceNumber = 0,
+                        Timestamp = (Int32) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds
+                    }
+                }
+            };
+
+            return this._assets.CreateAsset(param);
         }
 
         public object GetEventById(string eventId)
@@ -37,15 +58,13 @@ namespace AmbWindowsIoTSDK
         }
 
 
-        public object GetEvents(object paramaters)
+        public object GetEvents(EventOptions paramaters)
         {
+            this._events
             throw new NotImplementedException();
         }
 
-        public object CreateAsset(object asset)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public object CreateEvent(object asset, object eventData)
         {
