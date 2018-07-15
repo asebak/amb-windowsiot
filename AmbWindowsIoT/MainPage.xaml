@@ -5,10 +5,32 @@
     xmlns:local="using:AmbWindowsIoT"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pivotCs="using:PivotCS"
+    xmlns:controls="using:AmbWindowsIoT.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Pivot Style="{StaticResource TabsStylePivotStyle}">
+            <PivotItem>
+                <PivotItem.Header>
+                    <pivotCs:TabHeader Label="Add Asset" Glyph="&#xE82E;" />
+                </PivotItem.Header>
+                <TextBlock Text="Content content content" />
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <pivotCs:TabHeader Label="My Assets" Glyph="&#xE7C5;" />
+                </PivotItem.Header>
+                <TextBlock Text="Content content content" />
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <pivotCs:TabHeader Label="Node" Glyph="&#xEC27;" />
+                </PivotItem.Header>
+               <controls:Node Name="NodeControl"></controls:Node>
+            </PivotItem>
 
+        </Pivot>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Amb.Sdk;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +23,16 @@ namespace AmbWindowsIoT
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private readonly AmbrosusSdk _sdk;
         public MainPage()
         {
             this.InitializeComponent();
+            _sdk = new AmbrosusSdk(new AmbrosusSettings
+            {
+                Address = "",
+                Secret = ""
+            });
+           var x = NodeControl;
         }
     }
 }
