@@ -28,37 +28,6 @@ namespace AmbWindowsIoT
                 ApiEndpoint = "https://gateway-test.ambrosus.com",
             });
             var nodeinfo = sdk.GetNodeInfo();
-            //var data2 = sdk.GetAssetById("0x0fa1c2b80d6ecdfbad74b0b178c9a654e19f9caf1e02b6e1309f63f11aa408e6");
-            //var data = sdk.CreateAsset();
-            //var events = sdk.GetEvents(new EventOptions
-            //{
-            //    AssetId = "0x9d906df5f69a7a9fa416dd0742994d93d65bc70b2073e2fe43fd3f833802632f",
-            //    PerPage = 1
-            //});
-
-            //var createdEvent = sdk.CreateEvent("0x9d906df5f69a7a9fa416dd0742994d93d65bc70b2073e2fe43fd3f833802632f",
-            //    new List<Datum>
-            //    {
-            //        new Datum
-            //        {
-            //            Type = EventType.Temperature.Value,
-            //            AdditionalData = new Dictionary<string, JToken>
-            //            {
-            //                {"temperature", "15 C"},
-            //                {"greetings", "yo" }
-            //            }
-            //        },
-            //        new Datum
-            //        {
-            //            Type = EventType.AssetLocation.Value,
-            //            AdditionalData = new Dictionary<string, JToken>
-            //            {
-            //                {"location", "dsadsa"},
-            //                {"ant", "vv" }
-            //            }
-            //        }
-            //    });
-            //var event1 = sdk.GetEventById("0xd00331d81e6e4285950eb7b9c6549e99c569be2da26f9815b3b367bb09eb90ca");
 
         }
 
