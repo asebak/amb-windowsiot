@@ -1,4 +1,4 @@
-﻿namespace AmbWindowsIoTSDK.Api
+﻿namespace Amb.Sdk.Api
 {
     public interface IRequest
     {

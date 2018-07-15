@@ -5,9 +5,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using AmbWindowsIoTSDK;
-using AmbWindowsIoTSDK.Model.Event;
-using Newtonsoft.Json.Linq;
+using Amb.Sdk;
 
 namespace AmbWindowsIoT
 {
@@ -28,11 +26,6 @@ namespace AmbWindowsIoT
             var sdk = new AmbrosusSdk(new AmbrosusSettings
             {
                 ApiEndpoint = "https://gateway-test.ambrosus.com",
-                Address = "0x1B59bF08472C601c638eF710b3af625a3238C1c0",
-                Secret = "0xcdde30d1c7e4e047a192098bc3aaff24e1519595a22161726df0fe22ab5f1467"
-
-
-
             });
             var nodeinfo = sdk.GetNodeInfo();
             //var data2 = sdk.GetAssetById("0x0fa1c2b80d6ecdfbad74b0b178c9a654e19f9caf1e02b6e1309f63f11aa408e6");

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace AmbWindowsIoTSDK.Model.Asset
+namespace Amb.Sdk.Model.Asset
 {
 
     public class AssetList

@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace AmbWindowsIoTSDK.Api
+namespace Amb.Sdk.Api
 {
     public class Request: IRequest
     {

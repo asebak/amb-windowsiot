@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using AmbWindowsIoTSDK.Model;
 
-namespace AmbWindowsIoTSDK
+namespace Amb.Sdk
 {
     public class Utils
     {
@@ -14,32 +11,35 @@ namespace AmbWindowsIoTSDK
         {
             var keyValuePairs = parameters as KeyValuePair<string, object>[] ?? parameters.ToArray();
             if (!keyValuePairs.Any())
+            {
                 return string.Empty;
+            }
 
-            var builder = new StringBuilder("?");
+            var sb = new StringBuilder("?");
 
             var sep = string.Empty;
             foreach (var pair in keyValuePairs.Where(kvp => kvp.Value != null))
             {
-                builder.AppendFormat("{0}{1}={2}", sep, WebUtility.UrlEncode(pair.Key),
+                sb.AppendFormat("{0}{1}={2}", sep, WebUtility.UrlEncode(pair.Key),
                     WebUtility.UrlEncode(pair.Value.ToString()));
                 sep = "&";
             }
 
-            return builder.ToString();
+            var result = sb.ToString();
+            return result.Length == 1 ? "" : sb.ToString();
         }
 
     }
 
     public static class StringExtension
     {
-        public static string ToCamelCase(this string str)
+        public static string ToCamelCase(this string s)
         {
-            if (!string.IsNullOrEmpty(str) && str.Length > 1)
+            if (!string.IsNullOrEmpty(s) && s.Length > 1)
             {
-                return Char.ToLowerInvariant(str[0]) + str.Substring(1);
+                return char.ToLowerInvariant(s[0]) + s.Substring(1);
             }
-            return str;
+            return s;
         }
     }
 }

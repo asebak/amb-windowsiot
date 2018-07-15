@@ -1,8 +1,8 @@
 ﻿using System.Dynamic;
-using AmbWindowsIoTSDK.Model;
+using Amb.Sdk.Model;
 using Newtonsoft.Json;
 
-namespace AmbWindowsIoTSDK.Api
+namespace Amb.Sdk.Api
 {
     public class Auth
     {

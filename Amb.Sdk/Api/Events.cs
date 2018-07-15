@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using AmbWindowsIoTSDK.Model.Event;
+using Amb.Sdk.Model.Event;
 using Newtonsoft.Json;
 
-namespace AmbWindowsIoTSDK.Api
+namespace Amb.Sdk.Api
 {
     public class Events
     {
@@ -21,7 +21,10 @@ namespace AmbWindowsIoTSDK.Api
                 new KeyValuePair<string, object>(nameof(options.AssetId).ToCamelCase(), options.AssetId),
                 new KeyValuePair<string, object>(nameof(options.Data).ToCamelCase(), options.Data),
                 new KeyValuePair<string, object>(nameof(options.FromTimestamp).ToCamelCase(), options.FromTimestamp),
-                new KeyValuePair<string, object>(nameof(options.ToTimestamp).ToCamelCase(), options.ToTimestamp)
+                new KeyValuePair<string, object>(nameof(options.ToTimestamp).ToCamelCase(), options.ToTimestamp),
+                new KeyValuePair<string, object>(nameof(options.CreatedBy).ToCamelCase(), options.CreatedBy),
+                new KeyValuePair<string, object>(nameof(options.Page).ToCamelCase(), options.Page),
+
             });
 
             var events = _request.GetRequest<EventList>($"events{query}");

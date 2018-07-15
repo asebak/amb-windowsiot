@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AmbWindowsIoTSDK.Api;
-using AmbWindowsIoTSDK.Model;
-using AmbWindowsIoTSDK.Model.Asset;
-using AmbWindowsIoTSDK.Model.Event;
-using AssetContent = AmbWindowsIoTSDK.Model.Asset.Content;
-using EventContent = AmbWindowsIoTSDK.Model.Event.Content;
-using AssetIdData = AmbWindowsIoTSDK.Model.Asset.IdData;
-using EventIdData = AmbWindowsIoTSDK.Model.Event.IdData;
+using Amb.Sdk.Api;
+using Amb.Sdk.Model;
+using Amb.Sdk.Model.Asset;
+using Amb.Sdk.Model.Event;
+using AssetContent = Amb.Sdk.Model.Asset.Content;
+using EventContent = Amb.Sdk.Model.Event.Content;
+using AssetIdData = Amb.Sdk.Model.Asset.IdData;
+using EventIdData = Amb.Sdk.Model.Event.IdData;
 
-namespace AmbWindowsIoTSDK
+namespace Amb.Sdk
 {
     public class AmbrosusSdk
     {
@@ -31,14 +28,19 @@ namespace AmbWindowsIoTSDK
             this._node = new Node(new Request(settings));
         }
 
+        public AmbrosusSettings Settings => _settings;
+
         public AssetList GetAssets(AssetOptions options)
         {
            return this._assets.GetAssets(options);
         }
 
-
         public Asset GetAssetById(string assetId)
         {
+            if (string.IsNullOrEmpty(assetId))
+            {
+                throw new ArgumentException("assetId is required.");
+            }
             return this._assets.GetAssetById(assetId);
         }
 
@@ -50,7 +52,7 @@ namespace AmbWindowsIoTSDK
                 {
                     IdData = new AssetIdData
                     {
-                        CreatedBy = _settings.Address,
+                        CreatedBy = Settings.Address,
                         SequenceNumber = 0,
                         Timestamp = (Int32) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds
                     }
@@ -62,6 +64,11 @@ namespace AmbWindowsIoTSDK
 
         public Event GetEventById(string eventId)
         {
+            if (string.IsNullOrEmpty(eventId))
+            {
+                throw new ArgumentException("eventId is required.");
+            }
+
             return this._events.GetEventById(eventId);
         }
 
@@ -75,6 +82,11 @@ namespace AmbWindowsIoTSDK
 
         public Event CreateEvent(string assetId, IList<Datum> eventData)
         {
+            if (string.IsNullOrEmpty(assetId))
+            {
+                throw new ArgumentException("assetId is required.");
+            }
+
             var param = new Event
             {
                 Content = new EventContent
@@ -82,7 +94,7 @@ namespace AmbWindowsIoTSDK
                     IdData = new EventIdData
                     {
                         AssetId = assetId,
-                        CreatedBy = _settings.Address,
+                        CreatedBy = Settings.Address,
                         AccessLevel = 0,
                         Timestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds
                     }
@@ -96,7 +108,7 @@ namespace AmbWindowsIoTSDK
             }
             else
             {
-                throw new ArgumentException("Data field is required.");
+                throw new ArgumentException("eventData is required.");
             }
 
             return this._events.CreateEvent(assetId, param);

@@ -1,6 +1,6 @@
-﻿using AmbWindowsIoTSDK.Model;
+﻿using Amb.Sdk.Model;
 
-namespace AmbWindowsIoTSDK.Api
+namespace Amb.Sdk.Api
 {
     public class Node
     {

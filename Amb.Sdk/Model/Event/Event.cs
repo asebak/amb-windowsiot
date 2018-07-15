@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace AmbWindowsIoTSDK.Model.Event
+namespace Amb.Sdk.Model.Event
 {
     public class IdData
     {
