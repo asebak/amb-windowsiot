@@ -28,7 +28,6 @@
                 <PivotItem.Header>
                     <pivotCs:TabHeader Label="Node" Glyph="&#xEC27;" />
                 </PivotItem.Header>
-               <controls:Node Name="NodeControl"></controls:Node>
             </PivotItem>
 
         </Pivot>

@@ -24,9 +24,9 @@ namespace AmbWindowsIoT.Controls
         public Node()
         {
             this.InitializeComponent();
-            var nodeInfo = Sdk.GetNodeInfo();
-            this.NodeVersion.Text = nodeInfo.Version;
-            this.NodeAddress.Text = nodeInfo.NodeAddress;
+            //var nodeInfo = Sdk.GetNodeInfo();
+           // this.NodeVersion.Text = nodeInfo.Version;
+           // this.NodeAddress.Text = nodeInfo.NodeAddress;
             this.NodeEndpoint.Text = Sdk.Settings.ApiEndpoint;
 
         }

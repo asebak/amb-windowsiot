@@ -29,10 +29,10 @@ namespace AmbWindowsIoT
             this.InitializeComponent();
             _sdk = new AmbrosusSdk(new AmbrosusSettings
             {
-                Address = "",
-                Secret = ""
+
             });
-           var x = NodeControl;
+           var info = _sdk.GetNodeInfo();
+          var asset =   _sdk.CreateAsset();
         }
     }
 }
