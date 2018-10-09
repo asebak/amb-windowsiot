@@ -1,6 +1,6 @@
 ![alt text](https://cdn-images-1.medium.com/max/1600/1*hGJHnXJuOmfjIcEofbC0Ww.png 'Ambrosus')
 
-# Ambrosus C# SDK (Designed for Windows IoT and .NET core applications)
+# Unofficial Ambrosus C# SDK (Designed for Windows IoT and .NET core applications)
 
 Library for simple interaction with Ambrosus API for C# Applications.
 
